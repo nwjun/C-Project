@@ -15,15 +15,17 @@ void deposit();
 void withdraw();
 void delete_acc();
 
+#define MAX_ACC 100
+#define MAX_NAME 20
 typedef struct
 {
-    char acc_num[20];
-    char name[20];
-    char bank[50];
+    char acc_num[MAX_NAME];
+    char name[MAX_NAME];
+    char bank[MAX_NAME];
     double balance;
 }acc_type;
 
-acc_type account[20];
+acc_type account[MAX_ACC];
 
 int num = 0;
 
@@ -140,7 +142,7 @@ void display(void){
 
 void search(void)
 {
-    char acc_num[20];
+    char acc_num[MAX_NAME];
     int n;
 
     if(num == 0)
@@ -156,7 +158,7 @@ void search(void)
         n = acc_valid(acc_num);
 
         if(n== -1)
-            printf("Account not found!");
+            printf("Account not found!\n");
 
         else
         {
@@ -167,7 +169,7 @@ void search(void)
 
 void deposit(void)
 {
-    char n[20];
+    char n[MAX_NAME];
     int result, acc;
     double money = 0;
 
@@ -206,7 +208,7 @@ void deposit(void)
 
 void withdraw(void)
 {
-    char n[20];
+    char n[MAX_NAME];
     int result, acc;
     double money = 0;
 
@@ -252,7 +254,7 @@ void withdraw(void)
 
 void delete_acc(void)
 {
-    char acc_num[20];
+    char acc_num[MAX_NAME];
     int n;
 
     if(num <= 0)
